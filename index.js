@@ -5,11 +5,11 @@ const app = express();
 const PORT = 8008;
 const TIMEOUT_MS = 500;
 
-// Middleware to parse query parameters
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// GET /numbers
+
 app.get('/numbers', async (req, res) => {
   const urls = req.query.url;
   if (!urls) {
@@ -22,7 +22,7 @@ app.get('/numbers', async (req, res) => {
         const response = await axios.get(url, { timeout: TIMEOUT_MS });
         return response.data.numbers;
       } catch (error) {
-        // Ignore the error and return an empty array
+      
         return [];
       }
     });
